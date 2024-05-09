@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            background-color: #335235;
+            position: relative;
+        }
+
+        .container {
+            width: 300px;
+            margin: 50px auto;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #626034;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(6.5px);
+            -webkit-backdrop-filter: blur(6.5px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 90%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .box {
+            width: 140px;
+            height: auto;
+            float: left;
+            transition: .5s linear;
+            position: relative;
+            display: block;
+            overflow: hidden;
+            padding: 15px;
+            text-align: center;
+            margin: 0 5px;
+            background: transparent;
+            text-transform: uppercase;
+            font-weight: 900;
+            border: 1px solid #335234;
+            box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        .box:before {
+            position: absolute;
+            content: '';
+            left: 0;
+            bottom: 0;
+            height: 4px;
+            width: 100%;
+            border-bottom: 4px solid transparent;
+            border-left: 4px solid transparent;
+            box-sizing: border-box;
+            transform: translateX(100%);
+        }
+
+        .box:after {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            border-top: 4px solid transparent;
+            border-right: 4px solid transparent;
+            box-sizing: border-box;
+            transform: translateX(-100%);
+        }
+
+        .box:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .box:hover:before {
+            border-color: #f7f3f3;
+            height: 100%;
+            transform: translateX(0);
+            transition: .3s transform linear, .3s height linear .3s;
+        }
+
+        .box:hover:after {
+            border-color: #bdb8b8;
+            height: 100%;
+            transform: translateX(0);
+            transition: .3s transform linear, .3s height linear .5s;
+        }
+
+        button {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+            outline: none;
+            border: none;
+            background: transparent;
+        }
+    </style>
+    <div class="container">
+        <h1>Login</h1>
+        <form>
+            <label>Username :</label><br>
+            <input type="text" id="name" /><br>
+            <label>Email :</label><br>
+            <input type="email" id="email" /><br>
+            <label>Password</label><br>
+            <input type="password" id="password" /><br>
+            <label>Confirm Password</label><br>
+            <input type="password" id="cpassword" /><br>
+            <span id="span"></span>
+            <button onclick="submitForm()">
+                <span class="box">
+                    Log In
+                </span>
+            </button>
+        </form>
+    </div>
+    <script>
+        function submitForm() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let cpassword = document.getElementById("cpassword").value;
+
+
+            if (name === "" || email === "" || password === "" || cpassword === "") {
+                alert("All fields are required to Fill !");
+            } else if (password !== cpassword) {
+                alert("Password and Confirm Password do not match !");
+            } else if (password.length < 8 || password.length > 16) {
+                alert("Password length should be between 8 and 16 characters!");
+            } else {
+                alert("User Successfully Logged In");
+                window.location.href = "dashboard.html";
+                event.preventDefault();
+            }
+        }
+    </script>
+</body>
+
+</html>
